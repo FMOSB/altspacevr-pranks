@@ -50,7 +50,7 @@ export default class App {
             actor: {
                 transform: { 
                     local: {
-                        position: { x: 0, y: 0, z: 1.5 },
+                        position: { x: 0, y: 0, z: 2 },
                         rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -60 * MRESDK.DegreesToRadians),
                     }
                 },
@@ -200,7 +200,7 @@ export default class App {
             looping: false,
             doppler: 0.0,
             spread: 1.0,
-            rolloffStartDistance: 0.1
+            rolloffStartDistance: 1.0
         },
         0.0)
     }
