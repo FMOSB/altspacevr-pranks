@@ -51,12 +51,12 @@ export default class App {
                 transform: { 
                     local: {
                         position: { x: 0, y: 0, z: 1 },
-                        rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -90 * MRESDK.DegreesToRadians),
+                        rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -60 * MRESDK.DegreesToRadians),
                     }
                 },
                 attachment: {
                     userId: user.id,
-                    attachPoint: 'spine-top'
+                    attachPoint: 'hips'
                 },
                 exclusiveToUser: user.id
             }
@@ -192,6 +192,9 @@ export default class App {
     }
 
     private playFartSound(user: MRESDK.User) {
+
+        console.log("playFartSound")
+
         const sphereActor = this.fartSounds.get(user.id)
 
         sphereActor.startSound(this.fartSoundAsset.id, 
