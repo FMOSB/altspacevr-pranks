@@ -50,7 +50,7 @@ export default class App {
             actor: {
                 transform: { 
                     local: {
-                        position: { x: 0, y: 0, z: 1 },
+                        position: { x: 0, y: 0, z: 1.5 },
                         rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -60 * MRESDK.DegreesToRadians),
                     }
                 },
@@ -192,8 +192,7 @@ export default class App {
     }
 
     private playFartSound(user: MRESDK.User) {
-
-        console.log("playFartSound")
+        this.playBackgroundMusic()
 
         const sphereActor = this.fartSounds.get(user.id)
 
@@ -204,6 +203,40 @@ export default class App {
             doppler: 0.0,
             spread: 1.0,
             rolloffStartDistance: 0.1
+        },
+        0.0)
+    }
+
+
+
+
+
+    private playBackgroundMusic() {
+        const sphereActor = MRESDK.Actor.CreatePrimitive(this.context, {
+            definition: {
+                shape: MRESDK.PrimitiveShape.Sphere
+            },
+            actor: {
+                transform: {
+                    local: {
+                        position: new MRESDK.Vector3(0.0, -5.0, 0.0)
+                    }
+                }
+            }
+        }).value
+
+        const backgroundMusicAsset = this.context.assetManager.createSound(
+            'backgroundMusic',
+            { uri: `${this.baseUrl}/Orbit LOOP.ogg` }
+        )
+
+        sphereActor.startSound(backgroundMusicAsset.value.id, 
+        {
+            volume: 0.02,
+            looping: true,
+            doppler: 0.0,
+            spread: 1.0,
+            rolloffStartDistance: 1000.0
         },
         0.0)
     }
