@@ -199,7 +199,7 @@ export default class App {
             volume: 1.0,
             looping: false,
             doppler: 0.0,
-            spread: 1.0,
+            spread: 0.0,
             rolloffStartDistance: 1.0
         },
         0.0)
