@@ -35,6 +35,12 @@ export default class App {
         }
     }
 
+    private userLeft = async (user: MRESDK.User) => {
+        for (let hudPlane of this.hudPlanes) {
+            this.updateHUD(hudPlane)
+        }
+    }
+
     private attachHUD(user: MRESDK.User) {
         const hudPlane = MRESDK.Actor.CreatePrimitive(this.context, {
             definition: {
@@ -50,7 +56,7 @@ export default class App {
                 },
                 attachment: {
                     userId: user.id,
-                    attachPoint: 'head'
+                    attachPoint: 'spine-top'
                 },
                 exclusiveToUser: user.id
             }
@@ -164,10 +170,6 @@ export default class App {
         }
     }
 
-    private userLeft = async (user: MRESDK.User) => {
-        console.log("left")
-    }
-
     private attachFartSound(user: MRESDK.User) {
         const sphereActor = MRESDK.Actor.CreatePrimitive(this.context, {
             definition: {
@@ -191,8 +193,6 @@ export default class App {
 
     private playFartSound(user: MRESDK.User) {
         const sphereActor = this.fartSounds.get(user.id)
-
-        console.log(sphereActor)
 
         sphereActor.startSound(this.fartSoundAsset.id, 
         {
