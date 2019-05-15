@@ -25,7 +25,7 @@ export default class App {
     }
 
     private userJoined = async (user: MRESDK.User) => {
-        // this.attachHUD(user)
+        this.attachHUD(user)
         this.attachFartSound(user)
 
         for (let hudPlane of this.hudPlanes) {
