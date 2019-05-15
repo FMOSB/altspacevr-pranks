@@ -3,7 +3,7 @@ import * as MRESDK from '@microsoft/mixed-reality-extension-sdk'
 import { User } from './common'
 
 export class Fart {
-    static readonly fartCloudResourceId = "artifact: 1207620075821990676"
+    static readonly fartCloudResourceId = "artifact: 1208116214170124653"
 
     private interval: NodeJS.Timeout
 
@@ -64,7 +64,7 @@ export class Fart {
             user.isFarting = false
             user.fartSoundActor.destroy()
             user.fartCloudActor.destroy()
-        }, 5000)
+        }, 10000)
     }
 }
 
