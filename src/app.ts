@@ -23,11 +23,24 @@ export default class App {
             { uri: `${this.baseUrl}/fart.wav` }
         ).value
 
-        console.log("started")
+
+
+        MRESDK.Actor.CreateFromLibrary(this.context, {
+            resourceId: "artifact:1207614324776894466",
+            actor: {
+                transform: {
+                    local: {
+                        position: { x: 0, y: 0, z: 0 },
+                        rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -90 * MRESDK.DegreesToRadians),
+                        scale: { x: 1, y: 1, z: 1 }
+                    }
+                }
+            }
+        })
     }
 
     private userJoined = async (user: MRESDK.User) => {
-        this.attachHUD(user)
+        // this.attachHUD(user)
         this.attachFartSound(user)
 
         for (let hudPlane of this.hudPlanes) {
