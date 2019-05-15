@@ -22,21 +22,6 @@ export default class App {
             'fartSound',
             { uri: `${this.baseUrl}/fart.wav` }
         ).value
-
-
-
-        MRESDK.Actor.CreateFromLibrary(this.context, {
-            resourceId: "artifact:1207614324776894466",
-            actor: {
-                transform: {
-                    local: {
-                        position: { x: 0, y: 0, z: 0 },
-                        rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -90 * MRESDK.DegreesToRadians),
-                        scale: { x: 1, y: 1, z: 1 }
-                    }
-                }
-            }
-        })
     }
 
     private userJoined = async (user: MRESDK.User) => {
@@ -216,6 +201,23 @@ export default class App {
             rolloffStartDistance: 1.0
         },
         0.0)
+
+        MRESDK.Actor.CreateFromLibrary(this.context, {
+            resourceId: "artifact:1207620075821990676",
+            actor: {
+                transform: {
+                    local: {
+                        position: { x: 0, y: 0, z: -0.5 },
+                        rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -90 * MRESDK.DegreesToRadians),
+                        scale: { x: 0.1, y: 0.1, z: 0.1 }
+                    }
+                },
+                attachment: {
+                    userId: user.id,
+                    attachPoint: 'hips'
+                },
+            }
+        })
     }
 }
     
