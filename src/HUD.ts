@@ -11,8 +11,8 @@ export class HUD {
 
     static readonly width = 1.0
     static readonly height = 1.0
-    static readonly margin = 0.04
-    static readonly padding = 0.03
+    static readonly margin = 0.03
+    static readonly padding = 0.02
 
     static readonly headerHeight = 0.06
     static readonly textHeight = 0.05
@@ -52,14 +52,14 @@ export class HUD {
         }
 
         this.addTextToHUD(this.planeActor, HUD.margin, HUD.margin, "User", HUD.grayColor, true)
-        this.addTextToHUD(this.planeActor, HUD.margin + 0.35, HUD.margin, "Actions", HUD.grayColor, true)
+        this.addTextToHUD(this.planeActor, HUD.margin + 0.4, HUD.margin, "Actions", HUD.grayColor, true)
 
         for (let index = 0; index < users.length; index = index + 1) {
             let user = users[index]
 
             this.addTextToHUD(this.planeActor, HUD.margin, HUD.margin + (index + 1) * (HUD.textHeight + HUD.padding), Utility.truncate(user.name, 10), HUD.greenColor, false)
 
-            let fartTextActor = this.addTextToHUD(this.planeActor, HUD.margin + 0.35, HUD.margin + (index + 1) * (HUD.textHeight + HUD.padding), "fart", HUD.blueColor, false)
+            let fartTextActor = this.addTextToHUD(this.planeActor, HUD.margin + 0.4, HUD.margin + (index + 1) * (HUD.textHeight + HUD.padding), "fart", HUD.blueColor, false)
             fartTextActor.setCollider("box", false)
             
             const fartTextButtonBehavior = fartTextActor.setBehavior(MRESDK.ButtonBehavior)
