@@ -48,8 +48,8 @@ export class Fart {
             actor: {
                 transform: {
                     local: {
-                        position: { x: 0, y: 0.05, z: -0.35 },
-                        rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -90 * MRESDK.DegreesToRadians),
+                        position: { x: 0, y: 0.05, z: -0.2 },
+                        rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -45 * MRESDK.DegreesToRadians),
                         scale: { x: 0.5, y: 0.5, z: 0.5 }
                     }
                 },
