@@ -3,7 +3,7 @@ import * as MRESDK from '@microsoft/mixed-reality-extension-sdk'
 import { User } from './common'
 
 export class Fart {
-    static readonly fartCloudResourceId = "artifact: 1209634811065401853"
+    static readonly fartCloudResourceId = "artifact: 1209653793973600779"
 
     private interval: NodeJS.Timeout
 
@@ -48,9 +48,9 @@ export class Fart {
             actor: {
                 transform: {
                     local: {
-                        position: { x: 0, y: 0, z: -0.3 },
+                        position: { x: 0, y: 0.1, z: -0.3 },
                         rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -90 * MRESDK.DegreesToRadians),
-                        scale: { x: 0.5, y: 0.5, z: 0.5 }
+                        scale: { x: 0.4, y: 0.4, z: 0.4 }
                     }
                 },
                 attachment: {
