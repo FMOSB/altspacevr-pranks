@@ -57,7 +57,7 @@ export class HUD {
         for (let index = 0; index < users.length; index = index + 1) {
             let user = users[index]
 
-            this.addTextToHUD(this.planeActor, HUD.margin, HUD.margin + (index + 1) * (HUD.textHeight + HUD.padding), Utility.truncate(user.name, 15), HUD.greenColor, false)
+            this.addTextToHUD(this.planeActor, HUD.margin, HUD.margin + (index + 1) * (HUD.textHeight + HUD.padding), Utility.truncate(user.name, 13), HUD.greenColor, false)
 
             let fartTextActor = this.addTextToHUD(this.planeActor, HUD.margin + 0.4, HUD.margin + (index + 1) * (HUD.textHeight + HUD.padding), "fart", HUD.blueColor, false)
             fartTextActor.setCollider("box", false)
