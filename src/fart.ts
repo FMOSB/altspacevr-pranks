@@ -49,7 +49,7 @@ export class Fart {
                 transform: {
                     local: {
                         position: { x: 0, y: 0.05, z: -0.2 },
-                        rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -100 * MRESDK.DegreesToRadians),
+                        rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -110 * MRESDK.DegreesToRadians),
                         scale: { x: 0.5, y: 0.5, z: 0.5 }
                     }
                 },
