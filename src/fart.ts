@@ -50,7 +50,7 @@ export class Fart {
                     local: {
                         position: { x: 0, y: 0, z: -0.3 },
                         rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -90 * MRESDK.DegreesToRadians),
-                        scale: { x: 0.3, y: 0.3, z: 0.3 }
+                        scale: { x: 0.5, y: 0.5, z: 0.5 }
                     }
                 },
                 attachment: {
