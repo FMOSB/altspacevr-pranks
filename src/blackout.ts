@@ -27,7 +27,7 @@ export class Blackout {
                 appearance: { materialId: this.blackMaterial.id },
                 transform: { 
                     local: {
-                        position: { x: 0.0, y: 0.02, z: 0.15 },
+                        position: { x: 0.0, y: 0.01, z: 0.15 },
                         rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -90 * MRESDK.DegreesToRadians)
                     }
                 },
