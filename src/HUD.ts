@@ -2,6 +2,7 @@ import * as MRESDK from '@microsoft/mixed-reality-extension-sdk'
 
 import { User } from './common'
 import { Fart } from './fart'
+import { Blackout } from './blackout'
 import { Utility } from './utility'
 
 export class HUD {
@@ -19,9 +20,11 @@ export class HUD {
 
     private planeActor: MRESDK.Actor 
     private fart: Fart
+    private blackout: Blackout
 
     constructor(private context: MRESDK.Context, private baseUrl: string) {
         this.fart = new Fart(context, baseUrl)
+        this.blackout = new Blackout(context)
     }
 
     public attachTo(user: User) {
@@ -57,15 +60,27 @@ export class HUD {
         for (let index = 0; index < users.length; index = index + 1) {
             let user = users[index]
 
-            this.addTextToHUD(this.planeActor, HUD.margin, HUD.margin + (index + 1) * (HUD.textHeight + HUD.padding), Utility.truncate(user.name, 13), HUD.greenColor, false)
+            let y = HUD.margin + (index + 1) * (HUD.textHeight + HUD.padding)
 
-            let fartTextActor = this.addTextToHUD(this.planeActor, HUD.margin + 0.4, HUD.margin + (index + 1) * (HUD.textHeight + HUD.padding), "fart", HUD.blueColor, false)
+            this.addTextToHUD(this.planeActor, HUD.margin, y, Utility.truncate(user.name, 13), HUD.greenColor, false)
+
+            let fartTextActor = this.addTextToHUD(this.planeActor, HUD.margin + 0.4, y, "fart", HUD.blueColor, false)
             fartTextActor.setCollider("box", false)
             
             const fartTextButtonBehavior = fartTextActor.setBehavior(MRESDK.ButtonBehavior)
             fartTextButtonBehavior.onClick('pressed', (mreUser: MRESDK.User) => {
                 if (user.isFarting == false) {
                     this.fart.playSound(user)
+                }
+            })
+
+            let blackoutTextActor = this.addTextToHUD(this.planeActor, HUD.margin + 0.6, y, "blackout", HUD.blueColor, false)
+            blackoutTextActor.setCollider("box", false)
+            
+            const blackoutTextButtonBehavior = blackoutTextActor.setBehavior(MRESDK.ButtonBehavior)
+            blackoutTextButtonBehavior.onClick('pressed', (mreUser: MRESDK.User) => {
+                if (user.isBlackedOut == false) {
+                    this.blackout.drawPlane(user)
                 }
             })
         }

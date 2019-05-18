@@ -5,9 +5,15 @@ export class User {
     public fartSoundActor: MRESDK.Actor
     public fartCloudActor: MRESDK.Actor
 
+    public isBlackedOut: boolean
+    public blackoutActor: MRESDK.Actor
+
     constructor(public id: string, public name: string) {
         this.isFarting = false
         this.fartSoundActor = null
         this.fartCloudActor = null
+
+        this.isBlackedOut = false
+        this.blackoutActor = null
     }
 }   

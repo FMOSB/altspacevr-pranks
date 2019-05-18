@@ -4,6 +4,7 @@ import { User } from './common'
 
 export class Fart {
     static readonly fartCloudResourceId = "artifact: 1209665568215400791"
+    static readonly durationInMilliseconds = 7000 
 
     private interval: NodeJS.Timeout
 
@@ -64,7 +65,7 @@ export class Fart {
             user.isFarting = false
             user.fartSoundActor.destroy()
             user.fartCloudActor.destroy()
-        }, 7000)
+        }, Fart.durationInMilliseconds)
     }
 }
 
