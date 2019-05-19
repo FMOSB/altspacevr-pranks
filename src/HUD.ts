@@ -45,7 +45,8 @@ export class HUD {
                     attachPoint: 'hips'
                 },
                 exclusiveToUser: user.id
-            }
+            },
+            addCollider: true
         }).value
     }
 
