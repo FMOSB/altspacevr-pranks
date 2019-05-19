@@ -3,8 +3,8 @@ import * as MRESDK from '@microsoft/mixed-reality-extension-sdk'
 import { User } from './common'
 
 export class Blackout {
-    static readonly outwardFacingSphereResourceId = "artifact: 1210501799002243731"
-    static readonly inwardFacingSphereResourceId = "artifact: 1210501805352419988"
+    static readonly outwardFacingSphereResourceId = "artifact: 1210908854276063737"
+    static readonly inwardFacingSphereResourceId = "artifact: 1210908854276063737"
     static readonly durationInMilliseconds = 5000 
 
     private interval: NodeJS.Timeout
@@ -15,7 +15,6 @@ export class Blackout {
     public drawPlane(user: User) {
         user.isBlackedOut = true
 
-        /*
         user.blackoutOutwardFacingSphereActor = MRESDK.Actor.CreateFromLibrary(this.context, {
             resourceId: Blackout.outwardFacingSphereResourceId,
             actor: {
@@ -31,7 +30,6 @@ export class Blackout {
                 }    
             }
         }).value
-        */
 
         user.blackoutInwardFacingSphereActor = MRESDK.Actor.CreateFromLibrary(this.context, {
             resourceId: Blackout.inwardFacingSphereResourceId,
@@ -49,7 +47,6 @@ export class Blackout {
             }
         }).value
 
-        
         this.interval = setTimeout(() => {
             user.isBlackedOut = false
             user.blackoutOutwardFacingSphereActor.destroy()
