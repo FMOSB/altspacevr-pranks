@@ -15,6 +15,7 @@ export class Blackout {
     public drawPlane(user: User) {
         user.isBlackedOut = true
 
+        /*
         user.blackoutOutwardFacingSphereActor = MRESDK.Actor.CreateFromLibrary(this.context, {
             resourceId: Blackout.outwardFacingSphereResourceId,
             actor: {
@@ -30,8 +31,8 @@ export class Blackout {
                 }    
             }
         }).value
+        */
 
-        /*
         user.blackoutInwardFacingSphereActor = MRESDK.Actor.CreateFromLibrary(this.context, {
             resourceId: Blackout.inwardFacingSphereResourceId,
             actor: {
@@ -47,8 +48,8 @@ export class Blackout {
                 }
             }
         }).value
-        */
 
+        
         this.interval = setTimeout(() => {
             user.isBlackedOut = false
             user.blackoutOutwardFacingSphereActor.destroy()
