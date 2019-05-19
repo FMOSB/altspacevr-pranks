@@ -27,8 +27,8 @@ export class HUD {
         this.blackout = new Blackout(context)
     }
 
-    public attachTo(user: User) {
-        this.planeActor = MRESDK.Actor.CreatePrimitive(this.context, {
+    public async attachTo(user: User) {
+        this.planeActor = await MRESDK.Actor.CreatePrimitive(this.context, {
             definition: {
                 shape: MRESDK.PrimitiveShape.Plane,
                 dimensions: { x: HUD.width, y: 0, z: HUD.height }
@@ -50,22 +50,22 @@ export class HUD {
         }).value
     }
 
-    public update(users: Array<User>) {
+    public async update(users: Array<User>) {
         for (let actor of this.planeActor.children) {
             actor.destroy()
         }
 
-        this.addTextToHUD(this.planeActor, HUD.margin, HUD.margin, "User", HUD.grayColor, true)
-        this.addTextToHUD(this.planeActor, HUD.margin + 0.4, HUD.margin, "Actions", HUD.grayColor, true)
+        await this.addTextToHUD(this.planeActor, HUD.margin, HUD.margin, "User", HUD.grayColor, true)
+        await this.addTextToHUD(this.planeActor, HUD.margin + 0.4, HUD.margin, "Actions", HUD.grayColor, true)
 
         for (let index = 0; index < users.length; index = index + 1) {
             let user = users[index]
 
             let y = HUD.margin + (index + 1) * (HUD.textHeight + HUD.padding)
 
-            this.addTextToHUD(this.planeActor, HUD.margin, y, Utility.truncate(user.name, 13), HUD.greenColor, false)
+            await this.addTextToHUD(this.planeActor, HUD.margin, y, Utility.truncate(user.name, 13), HUD.greenColor, false)
 
-            let fartTextActor = this.addTextToHUD(this.planeActor, HUD.margin + 0.4, y, "fart", HUD.blueColor, false)
+            let fartTextActor = await this.addTextToHUD(this.planeActor, HUD.margin + 0.4, y, "fart", HUD.blueColor, false)
             fartTextActor.setCollider("box", false)
             
             const fartTextButtonBehavior = fartTextActor.setBehavior(MRESDK.ButtonBehavior)
@@ -75,7 +75,7 @@ export class HUD {
                 }
             })
 
-            let blackoutTextActor = this.addTextToHUD(this.planeActor, HUD.margin + 0.6, y, "blackout", HUD.blueColor, false)
+            let blackoutTextActor = await this.addTextToHUD(this.planeActor, HUD.margin + 0.6, y, "blackout", HUD.blueColor, false)
             blackoutTextActor.setCollider("box", false)
             
             const blackoutTextButtonBehavior = blackoutTextActor.setBehavior(MRESDK.ButtonBehavior)
@@ -87,10 +87,10 @@ export class HUD {
         }
     }
 
-    private addTextToHUD(hudPlane: MRESDK.Actor, x: number, y: number, contents: string, color: MRESDK.Color3, isHeader: boolean): MRESDK.Actor {
+    private async addTextToHUD(hudPlane: MRESDK.Actor, x: number, y: number, contents: string, color: MRESDK.Color3, isHeader: boolean): Promise<MRESDK.Actor> {
         var height: number = isHeader ? HUD.headerHeight : HUD.textHeight
         
-        let textActor = MRESDK.Actor.CreateEmpty(this.context, {
+        let textActor = await MRESDK.Actor.CreateEmpty(this.context, {
             actor: {
                 parentId: hudPlane.id,
                 transform: {
@@ -108,7 +108,7 @@ export class HUD {
                     height: height
                 }
             }
-        }).value
+        })
 
         return textActor
     }

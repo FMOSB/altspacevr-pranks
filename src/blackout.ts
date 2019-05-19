@@ -12,10 +12,10 @@ export class Blackout {
     constructor(private context: MRESDK.Context) {
     }
 
-    public drawPlane(user: User) {
+    public async drawPlane(user: User) {
         user.isBlackedOut = true
 
-        user.blackoutOutwardFacingSphereActor = MRESDK.Actor.CreateFromLibrary(this.context, {
+        user.blackoutOutwardFacingSphereActor = await MRESDK.Actor.CreateFromLibrary(this.context, {
             resourceId: Blackout.outwardFacingSphereResourceId,
             actor: {
                 transform: {
@@ -31,7 +31,7 @@ export class Blackout {
             }
         }).value
 
-        user.blackoutInwardFacingSphereActor = MRESDK.Actor.CreateFromLibrary(this.context, {
+        user.blackoutInwardFacingSphereActor = await MRESDK.Actor.CreateFromLibrary(this.context, {
             resourceId: Blackout.inwardFacingSphereResourceId,
             actor: {
                 transform: {

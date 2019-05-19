@@ -11,16 +11,20 @@ export class Fart {
     private fartSoundAsset: MRESDK.Sound
 
     constructor(private context: MRESDK.Context, private baseUrl: string) {
-        this.fartSoundAsset = this.context.assetManager.createSound(
+        this.setupAssets()
+    }
+
+    private async setupAssets() {
+        this.fartSoundAsset = await this.context.assetManager.createSound(
             'fartSound',
             { uri: `${this.baseUrl}/fart.wav` }
         ).value    
     }
 
-    public playSound(user: User) {
+    public async playSound(user: User) {
         user.isFarting = true
 
-        user.fartSoundActor = MRESDK.Actor.CreatePrimitive(this.context, {
+        user.fartSoundActor = await MRESDK.Actor.CreatePrimitive(this.context, {
             definition: {
                 shape: MRESDK.PrimitiveShape.Sphere
             },
@@ -35,7 +39,7 @@ export class Fart {
             }
         }).value
 
-        user.fartSoundActor.startSound(this.fartSoundAsset.id, {
+        await user.fartSoundActor.startSound(this.fartSoundAsset.id, {
             volume: 1.0,
             looping: false,
             doppler: 0.0,
@@ -44,7 +48,7 @@ export class Fart {
         },
         0.0)
 
-        user.fartCloudActor = MRESDK.Actor.CreateFromLibrary(this.context, {
+        user.fartCloudActor = await MRESDK.Actor.CreateFromLibrary(this.context, {
             resourceId: Fart.fartCloudResourceId,
             actor: {
                 transform: {
