@@ -24,10 +24,10 @@ export class Blackout {
                         scale: { x: 0.55, y: 0.55, z: 0.55 }
                     },
                 },
-                //attachment: {
-                //    userId: user.id,
-                //    attachPoint: 'head'
-                //}    
+                attachment: {
+                    userId: user.id,
+                    attachPoint: 'head'
+                }    
             }
         }).value
 
@@ -40,10 +40,10 @@ export class Blackout {
                         scale: { x: 0.54, y: 0.54, z: 0.54 }
                     }
                 },
-                //attachment: {
-                //    userId: user.id,
-                //    attachPoint: 'head'
-                //}
+                attachment: {
+                    userId: user.id,
+                    attachPoint: 'head'
+                }
             }
         }).value
 
