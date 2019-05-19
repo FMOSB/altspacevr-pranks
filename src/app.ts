@@ -5,7 +5,6 @@ import { HUD } from './HUD'
 
 export default class App {
     private users: Array<User> = []
-    private huds: Array<HUD> = []
 
     constructor(private context: MRESDK.Context, private baseUrl: string) {
         this.context.onStarted(() => this.started())
@@ -23,19 +22,17 @@ export default class App {
 
         let hud = new HUD(this.context, this.baseUrl)
         await hud.attachTo(user)
-        this.huds.push(hud)
 
-        for (let hud of this.huds) {
-            await hud.update(this.users)
+        for (let user of this.users) {
+            await user.hud.update(this.users)
         }
     }
 
     private userLeft = async (mreUser: MRESDK.User) => {
         this.users = this.users.filter(user => user.id != mreUser.id)
 
-        for (let hud of this.huds) {
-            await hud.update(this.users)
+        for (let user of this.users) {
+            await user.hud.update(this.users)
         }
     }
 }
-    

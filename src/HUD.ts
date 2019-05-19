@@ -28,6 +28,8 @@ export class HUD {
     }
 
     public async attachTo(user: User) {
+        user.hud = this
+
         this.planeActor = await MRESDK.Actor.CreatePrimitive(this.context, {
             definition: {
                 shape: MRESDK.PrimitiveShape.Plane,
