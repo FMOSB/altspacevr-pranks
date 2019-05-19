@@ -3,32 +3,41 @@ import * as MRESDK from '@microsoft/mixed-reality-extension-sdk'
 import { User } from './common'
 
 export class Blackout {
+    static readonly outwardFacingSphereResourceId = "artifact: 1210501799002243731"
+    static readonly inwardFacingSphereResourceId = "artifact: 1210501805352419988"
     static readonly durationInMilliseconds = 5000 
 
     private interval: NodeJS.Timeout
 
-    private blackMaterial: MRESDK.Material
-
     constructor(private context: MRESDK.Context) {
-        this.blackMaterial = this.context.assetManager.createMaterial('black', {
-            color: MRESDK.Color3.FromInts(0, 0, 0)
-        }).value
     }
 
     public drawPlane(user: User) {
         user.isBlackedOut = true
 
-        user.blackoutActor = MRESDK.Actor.CreatePrimitive(this.context, {
-            definition: {
-                shape: MRESDK.PrimitiveShape.Plane,
-                dimensions: { x: 0.3, y: 0.0, z: 0.2 }
-            },
+        user.blackoutOutwardFacingSphereActor = MRESDK.Actor.CreateFromLibrary(this.context, {
+            resourceId: Blackout.outwardFacingSphereResourceId,
             actor: {
-                appearance: { materialId: this.blackMaterial.id },
-                transform: { 
+                transform: {
                     local: {
-                        position: { x: 0.0, y: 0.01, z: 0.15 },
-                        rotation: MRESDK.Quaternion.RotationAxis(MRESDK.Vector3.Right(), -90 * MRESDK.DegreesToRadians)
+                        position: { x: 0.0, y: 0.0, z: 0.0 },
+                        scale: { x: 1.0, y: 1.0, z: 1.0 }
+                    },
+                },
+                attachment: {
+                    userId: user.id,
+                    attachPoint: 'head'
+                }    
+            }
+        }).value
+
+        user.blackoutInwardFacingSphereActor = MRESDK.Actor.CreateFromLibrary(this.context, {
+            resourceId: Blackout.inwardFacingSphereResourceId,
+            actor: {
+                transform: {
+                    local: {
+                        position: { x: 0.0, y: 0.0, z: 0.0 },
+                        scale: { x: 0.99, y: 0.99, z: 0.99 }
                     }
                 },
                 attachment: {
@@ -40,7 +49,8 @@ export class Blackout {
 
         this.interval = setTimeout(() => {
             user.isBlackedOut = false
-            user.blackoutActor.destroy()
+            user.blackoutOutwardFacingSphereActor.destroy()
+            user.blackoutInwardFacingSphereActor.destroy()
         }, Blackout.durationInMilliseconds)
     }
 }
