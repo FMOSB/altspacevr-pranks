@@ -31,6 +31,7 @@ export class Blackout {
             }
         }).value
 
+        /*
         user.blackoutInwardFacingSphereActor = MRESDK.Actor.CreateFromLibrary(this.context, {
             resourceId: Blackout.inwardFacingSphereResourceId,
             actor: {
@@ -46,6 +47,7 @@ export class Blackout {
                 }
             }
         }).value
+        */
 
         this.interval = setTimeout(() => {
             user.isBlackedOut = false
