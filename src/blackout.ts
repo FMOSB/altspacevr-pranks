@@ -3,8 +3,8 @@ import * as MRESDK from '@microsoft/mixed-reality-extension-sdk'
 import { User } from './common'
 
 export class Blackout {
-    static readonly outwardFacingSphereResourceId = "artifact: 1210908859317617147"
-    static readonly inwardFacingSphereResourceId = "artifact: 1210908854276063737"
+    static readonly outwardFacingSphereResourceId = "artifact: 1210945157814289274"
+    static readonly inwardFacingSphereResourceId = "artifact: 1210945157814289274"
     static readonly durationInMilliseconds = 5000 
 
     private interval: NodeJS.Timeout
