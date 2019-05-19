@@ -10,8 +10,8 @@ export class User {
     public fartCloudActor: MRESDK.Actor
 
     public isBlackedOut: boolean
-    public blackoutOutwardFacingSphereActor: MRESDK.Actor
-    public blackoutInwardFacingSphereActor: MRESDK.Actor
+    public blackoutOutwardFacingCubeActor: MRESDK.Actor
+    public blackoutInwardFacingCubeActor: MRESDK.Actor
 
     constructor(public id: string, public name: string) {
         this.hud = null
@@ -21,7 +21,7 @@ export class User {
         this.fartCloudActor = null
 
         this.isBlackedOut = false
-        this.blackoutOutwardFacingSphereActor = null
-        this.blackoutInwardFacingSphereActor = null
+        this.blackoutOutwardFacingCubeActor = null
+        this.blackoutInwardFacingCubeActor = null
     }
 }   

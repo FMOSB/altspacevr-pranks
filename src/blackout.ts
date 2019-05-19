@@ -3,8 +3,8 @@ import * as MRESDK from '@microsoft/mixed-reality-extension-sdk'
 import { User } from './common'
 
 export class Blackout {
-    static readonly outwardFacingSphereResourceId = "artifact: 1210966302131225037"
-    static readonly inwardFacingSphereResourceId = "artifact: 1210966307894198735"
+    static readonly outwardFacingCubeResourceId = "artifact: 1210966302131225037"
+    static readonly inwardFacingCubeResourceId = "artifact: 1210966307894198735"
     static readonly durationInMilliseconds = 5000 
 
     private interval: NodeJS.Timeout
@@ -15,8 +15,8 @@ export class Blackout {
     public async drawPlane(user: User) {
         user.isBlackedOut = true
 
-        user.blackoutOutwardFacingSphereActor = await MRESDK.Actor.CreateFromLibrary(this.context, {
-            resourceId: Blackout.outwardFacingSphereResourceId,
+        user.blackoutOutwardFacingCubeActor = await MRESDK.Actor.CreateFromLibrary(this.context, {
+            resourceId: Blackout.outwardFacingCubeResourceId,
             actor: {
                 transform: {
                     local: {
@@ -31,8 +31,8 @@ export class Blackout {
             }
         }).value
 
-        user.blackoutInwardFacingSphereActor = await MRESDK.Actor.CreateFromLibrary(this.context, {
-            resourceId: Blackout.inwardFacingSphereResourceId,
+        user.blackoutInwardFacingCubeActor = await MRESDK.Actor.CreateFromLibrary(this.context, {
+            resourceId: Blackout.inwardFacingCubeResourceId,
             actor: {
                 transform: {
                     local: {
@@ -49,8 +49,8 @@ export class Blackout {
 
         this.interval = setTimeout(() => {
             user.isBlackedOut = false
-            user.blackoutOutwardFacingSphereActor.destroy()
-            user.blackoutInwardFacingSphereActor.destroy()
+            user.blackoutOutwardFacingCubeActor.destroy()
+            user.blackoutInwardFacingCubeActor.destroy()
         }, Blackout.durationInMilliseconds)
     }
 }
