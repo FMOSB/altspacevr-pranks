@@ -69,9 +69,9 @@ export class HUD {
             fartTextActor.setCollider("box", false)
             
             const fartTextButtonBehavior = fartTextActor.setBehavior(MRESDK.ButtonBehavior)
-            fartTextButtonBehavior.onClick('pressed', (mreUser: MRESDK.User) => {
+            fartTextButtonBehavior.onClick('pressed', async (mreUser: MRESDK.User) => {
                 if (user.isFarting == false) {
-                    this.fart.playSound(user)
+                    await this.fart.playSound(user)
                 }
             })
 
@@ -79,9 +79,9 @@ export class HUD {
             blackoutTextActor.setCollider("box", false)
             
             const blackoutTextButtonBehavior = blackoutTextActor.setBehavior(MRESDK.ButtonBehavior)
-            blackoutTextButtonBehavior.onClick('pressed', (mreUser: MRESDK.User) => {
+            blackoutTextButtonBehavior.onClick('pressed', async (mreUser: MRESDK.User) => {
                 if (user.isBlackedOut == false) {
-                    this.blackout.drawPlane(user)
+                    await this.blackout.drawPlane(user)
                 }
             })
         }

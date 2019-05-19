@@ -22,11 +22,11 @@ export default class App {
         this.users.push(user)
 
         let hud = new HUD(this.context, this.baseUrl)
-        hud.attachTo(user)
+        await hud.attachTo(user)
         this.huds.push(hud)
 
         for (let hud of this.huds) {
-            hud.update(this.users)
+            await hud.update(this.users)
         }
     }
 
@@ -34,7 +34,7 @@ export default class App {
         this.users = this.users.filter(user => user.id != mreUser.id)
 
         for (let hud of this.huds) {
-            hud.update(this.users)
+            await hud.update(this.users)
         }
     }
 }
