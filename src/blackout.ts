@@ -29,7 +29,7 @@ export class Blackout {
                     attachPoint: 'head'
                 }    
             }
-        }).value
+        })
 
         user.blackoutInwardFacingCubeActor = await MRESDK.Actor.CreateFromLibrary(this.context, {
             resourceId: Blackout.inwardFacingCubeResourceId,
@@ -45,7 +45,7 @@ export class Blackout {
                     attachPoint: 'head'
                 }
             }
-        }).value
+        })
 
         this.interval = setTimeout(() => {
             user.isBlackedOut = false

@@ -18,7 +18,7 @@ export class Fart {
         this.fartSoundAsset = await this.context.assetManager.createSound(
             'fartSound',
             { uri: `${this.baseUrl}/fart.wav` }
-        ).value    
+        )
     }
 
     public async playSound(user: User) {
@@ -37,7 +37,7 @@ export class Fart {
                     attachPoint: 'hips'
                 }
             }
-        }).value
+        })
 
         await user.fartSoundActor.startSound(this.fartSoundAsset.id, {
             volume: 1.0,
@@ -63,7 +63,7 @@ export class Fart {
                     attachPoint: 'hips'
                 },
             }
-        }).value
+        })
 
         this.interval = setTimeout(() => {
             user.isFarting = false

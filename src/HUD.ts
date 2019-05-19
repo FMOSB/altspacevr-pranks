@@ -49,7 +49,7 @@ export class HUD {
                 exclusiveToUser: user.id
             },
             addCollider: true
-        }).value
+        })
     }
 
     public async update(users: Array<User>) {
