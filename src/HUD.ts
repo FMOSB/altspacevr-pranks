@@ -67,7 +67,7 @@ export class HUD {
 
             await this.addTextToHUD(this.planeActor, HUD.margin, y, Utility.truncate(user.name, 13), HUD.greenColor, false)
 
-            let fartTextActor = await this.addTextToHUD(this.planeActor, HUD.margin + 0.4, y, "fart", HUD.blueColor, false)
+            let fartTextActor = await this.addTextToHUD(this.planeActor, HUD.margin + 0.4, y, "speak", HUD.blueColor, false)
             fartTextActor.setCollider("box", false)
             
             const fartTextButtonBehavior = fartTextActor.setBehavior(MRESDK.ButtonBehavior)
