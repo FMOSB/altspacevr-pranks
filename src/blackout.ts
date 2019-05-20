@@ -37,7 +37,7 @@ export class Blackout {
                 transform: {
                     local: {
                         position: { x: 0.0, y: 0.0, z: 0.0 },
-                        scale: { x: 0.49, y: 0.49, z: 0.49 }
+                        scale: { x: 50, y: 50, z: 50 }
                     }
                 },
                 attachment: {
