@@ -77,7 +77,7 @@ export class HUD {
                 }
             })
 
-            let blackoutTextActor = await this.addTextToHUD(this.planeActor, HUD.margin + 0.6, y, "blackout", HUD.blueColor, false)
+            let blackoutTextActor = await this.addTextToHUD(this.planeActor, HUD.margin + 0.6, y, "Vision", HUD.blueColor, false)
             blackoutTextActor.setCollider("box", false)
             
             const blackoutTextButtonBehavior = blackoutTextActor.setBehavior(MRESDK.ButtonBehavior)
