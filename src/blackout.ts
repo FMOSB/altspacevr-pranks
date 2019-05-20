@@ -3,7 +3,7 @@ import * as MRESDK from '@microsoft/mixed-reality-extension-sdk'
 import { User } from './common'
 
 export class Blackout {
-    static readonly outwardFacingCubeResourceId = "artifact: 1210966302131225037"
+    static readonly outwardFacingCubeResourceId = "artifact: 1211539167981339226"
     static readonly inwardFacingCubeResourceId = "artifact: 1211539167981339226"
     static readonly durationInMilliseconds = 5000 
 
