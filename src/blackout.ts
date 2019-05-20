@@ -36,7 +36,7 @@ export class Blackout {
             actor: {
                 transform: {
                     local: {
-                        position: { x: -0.5, y: 0.0, z: 0.0 },
+                        position: { x: -0.25, y: 0.0, z: 0.1 },
                         scale: { x: 50, y: 50, z: 50 }
                     }
                 },
