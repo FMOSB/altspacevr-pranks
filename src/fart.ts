@@ -17,7 +17,7 @@ export class Fart {
     private async setupAssets() {
         this.fartSoundAsset = await this.context.assetManager.createSound(
             'fartSound',
-            { uri: `${this.baseUrl}/bumbling.wav` }
+            { uri: `${this.baseUrl}/disclose.wav` }
         )
     }
 
